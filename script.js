@@ -37,5 +37,38 @@ function operate(operator, a, b) {
   }
 }
 
-let display = document.getElementById("display")
-display.textContent = "this is a display";
+let display = document.getElementById("display");
+display.textContent = "4";
+
+function updateDisplay(value) {
+    display.textContent = value;
+}
+
+
+
+let buttons = document.getElementById("calculatorButtons");
+
+for (let i = 0; i <= 9;i++) {
+    document.getElementById(`btn${i}`).addEventListener('click', function() {
+        updateDisplay(i.toString());
+});
+}
+
+
+
+
+let addition = document
+  .getElementById("add")
+  .addEventListener("click", () => add());
+let subtraction = document
+  .getElementById("subtract")
+  .addEventListener("click", () => subtract());
+let multiplication = document
+  .getElementById("multiply")
+  .addEventListener("click", () => multiply());
+let division = document
+  .getElementById("divide")
+  .addEventListener("click", () => divide());
+
+
+
