@@ -26,6 +26,7 @@ body {
   }
   
   button {
+    box-sizing: border-box;
     padding: 20px;
     font-size: 24px;
     border: none;
@@ -55,16 +56,21 @@ body {
     word-break: break-all;
 }
   
-  .backspaceClear {
+.backspaceClear {
     display: flex;
-    
-    
 }
-  
-  #clear, #delete {
-    width: 50%;
-    box-sizing: border-box;
+
+.backspaceClear button {
+    flex-grow: 1;
+    width: calc(50% - 10px); /* Adjusted width */
     margin: 5px;
-    
+}
+
+
+  
+
+
+  #delete {
+    padding: 100px;
   }
   
