@@ -134,9 +134,16 @@ let backspace = document.getElementById("backspace").addEventListener("click", (
         display.textContent = display.textContent.slice(0, -1);
       } else if (operator !== "") {
         operator = "";
-        display.textContent = display.textContent.slice(0, -3); // remove " + ", " - ", etc.
+        display.textContent = display.textContent.slice(0, -3);
       } else if (firstNumber !== "") {
         firstNumber = firstNumber.slice(0, -1);
         display.textContent = display.textContent.slice(0, -1);
       }   
 });
+
+let decimal = document.getElementById("decimal").addEventListener("click", () => {
+    if (!display.textContent.includes(".")) {
+      display.textContent += ".";
+    }
+  });
+  
