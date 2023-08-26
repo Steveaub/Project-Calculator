@@ -18,10 +18,6 @@ function divide(a, b) {
   return a / b;
 }
 
-let firstNumber;
-let operator;
-let secondNumber;
-
 function operate(operator, a, b) {
   if (operator === "+") {
     return add(a, b);
@@ -38,37 +34,86 @@ function operate(operator, a, b) {
 }
 
 let display = document.getElementById("display");
-display.textContent = "4";
+display.textContent = "";
+
+let firstNumber = "";
+let secondNumber = "";
+let operator = "";
 
 function updateDisplay(value) {
-    display.textContent = value;
+  display.textContent += value;
+  if (operator === "") {
+    firstNumber += value;
+  } else {
+    secondNumber += value;
+  }
+
+  console.log(firstNumber);
+  console.log(operator);
+  console.log(secondNumber);
 }
 
+let numberButtons = document.getElementById("calculatorButtons");
 
+for (let i = 0; i <= 9; i++) {
+  document.getElementById(`btn${i}`).addEventListener("click", function () {
+    updateDisplay(i.toString());
+  });
+};
 
-let buttons = document.getElementById("calculatorButtons");
-
-for (let i = 0; i <= 9;i++) {
-    document.getElementById(`btn${i}`).addEventListener('click', function() {
-        updateDisplay(i.toString());
+let addition = document.getElementById("add").addEventListener("click", () => {
+    if (secondNumber !== "") {
+        firstNumber = operate(operator, parseFloat(firstNumber), parseFloat(secondNumber)).toString();
+        secondNumber = "";
+      }
+  
+  
+    operator = "+";
+  display.textContent += " + ";
+ 
 });
-}
-
-
-
-
-let addition = document
-  .getElementById("add")
-  .addEventListener("click", () => add());
 let subtraction = document
   .getElementById("subtract")
-  .addEventListener("click", () => subtract());
+  .addEventListener("click", () => {
+    if (secondNumber !== "") {
+        firstNumber = operate(operator, parseFloat(firstNumber), parseFloat(secondNumber)).toString();
+        secondNumber = "";
+      }
+   
+    operator = "-";
+    display.textContent += "-";
+    
+});
 let multiplication = document
   .getElementById("multiply")
-  .addEventListener("click", () => multiply());
-let division = document
-  .getElementById("divide")
-  .addEventListener("click", () => divide());
+  .addEventListener("click", () => {
+    if (secondNumber !== "") {
+        firstNumber = operate(operator, parseFloat(firstNumber), parseFloat(secondNumber)).toString();
+        secondNumber = "";
+      }
+   
+   
+    operator = "*";
+    display.textContent += "*";
+    
+});
+let division = document.getElementById("divide").addEventListener("click", () => {
+    operator = "/";
+    display.textContent += "/";
+
+});
+
+let clear = document.getElementById("clear").addEventListener("click", () => { 
+    display.textContent = "";
+    firstNumber = "";
+    secondNumber = "";
+    operator = "";
+   } );
 
 
-
+document.getElementById("equal").addEventListener("click", () => {
+  if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
+    display.textContent = operate(operator, parseFloat(firstNumber), parseFloat(secondNumber));
+   
+  }
+});
