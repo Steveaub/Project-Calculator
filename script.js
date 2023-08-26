@@ -40,13 +40,16 @@ let firstNumber = "";
 let secondNumber = "";
 let operator = "";
 
+
+let maxLength = 20;
 function updateDisplay(value) {
-  display.textContent += value;
-  if (operator === "") {
-    firstNumber += value;
-  } else {
-    secondNumber += value;
-  }
+    if (display.textContent.length >= maxLength) return;
+    display.textContent += value;
+    if (operator === "") {
+        firstNumber += value;
+    } else {
+        secondNumber += value;
+    }
 
   console.log(firstNumber);
   console.log(operator);
@@ -146,4 +149,5 @@ let decimal = document.getElementById("decimal").addEventListener("click", () =>
       display.textContent += ".";
     }
   });
+  
   
